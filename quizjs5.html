@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Poker Preflop Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .scenario {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            cursor: pointer;
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        .answer {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .explanation {
+            margin-top: 10px;
+            font-style: italic;
+            color: #555;
+        }
+        .hidden {
+            display: none;
+        }
+        .wrong-answer {
+            color: red;
+            font-weight: bold;
+        }
+        .correct-answer {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Interactive Poker Preflop Quiz</h1>
+    <p>Test your preflop decision-making skills in 6-max NLHE poker. Click on your answer to reveal the correct choice and explanation.</p>
+
+    <!-- Scenario 1 -->
+    <div class="scenario">
+        <h2>Scenario 1: Facing an UTG Raise with AQs</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> AQs in the Hijack (HJ)</p>
+        <p><strong>Action:</strong> UTG raises to $2.50</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario1" data-option="A" onclick="handleAnswer('scenario1', 'A', 'B')">A) Fold</div>
+            <div class="option" data-scenario="scenario1" data-option="B" onclick="handleAnswer('scenario1', 'B', 'B')">B) 3-bet to $7.50</div>
+        </div>
+        <div id="scenario1-answer" class="hidden">
+            <div class="answer">Correct Answer: B) 3-bet to $7.50</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> AQs is a <strong>3-bet</strong> against an UTG open in the HJ. It’s too strong to fold and should be used to isolate and build the pot.
+                <br><strong>Range Alignment:</strong> HJ 3-bet range vs UTG includes AQs, AK, JJ+, and some suited broadways.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 2 -->
+    <div class="scenario">
+        <h2>Scenario 2: Facing a Button Open with 77</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> 77 in the Small Blind (SB)</p>
+        <p><strong>Action:</strong> BTN raises to $2.50</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario2" data-option="A" onclick="handleAnswer('scenario2', 'A', 'B')">A) Fold</div>
+            <div class="option" data-scenario="scenario2" data-option="B" onclick="handleAnswer('scenario2', 'B', 'B')">B) 3-bet to $11</div>
+        </div>
+        <div id="scenario2-answer" class="hidden">
+            <div class="answer">Correct Answer: B) 3-bet to $11</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> 77 is a <strong>3-bet</strong> against a BTN open from the SB. It’s strong enough to play aggressively and deny equity.
+                <br><strong>Range Alignment:</strong> SB 3-bet range vs BTN includes 77+, AQo+, and some suited connectors.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 3 -->
+    <div class="scenario">
+        <h2>Scenario 3: Facing a 3-Bet with KQs</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> KQs in the Cutoff (CO)</p>
+        <p><strong>Action:</strong> Hero raises to $2.50, SB 3-bets to $11</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario3" data-option="A" onclick="handleAnswer('scenario3', 'A', 'B')">A) Fold</div>
+            <div class="option" data-scenario="scenario3" data-option="B" onclick="handleAnswer('scenario3', 'B', 'B')">B) Call</div>
+            <div class="option" data-scenario="scenario3" data-option="C" onclick="handleAnswer('scenario3', 'C', 'B')">C) 4-bet to $25</div>
+        </div>
+        <div id="scenario3-answer" class="hidden">
+            <div class="answer">Correct Answer: B) Call</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> KQs is a <strong>call</strong> against a SB 3-bet. It’s strong enough to continue and has good equity against SB’s 3-bet range.
+                <br><strong>Range Alignment:</strong> CO vs SB 3-bet calling range includes KQs, JJ, and some suited broadways.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 4 -->
+    <div class="scenario">
+        <h2>Scenario 4: Facing an UTG Raise with KJo</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> KJo in the Big Blind (BB)</p>
+        <p><strong>Action:</strong> UTG raises to $2.50</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario4" data-option="A" onclick="handleAnswer('scenario4', 'A', 'A')">A) Fold</div>
+            <div class="option" data-scenario="scenario4" data-option="B" onclick="handleAnswer('scenario4', 'B', 'A')">B) Call</div>
+            <div class="option" data-scenario="scenario4" data-option="C" onclick="handleAnswer('scenario4', 'C', 'A')">C) 3-bet to $13</div>
+        </div>
+        <div id="scenario4-answer" class="hidden">
+            <div class="answer">Correct Answer: A) Fold</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> KJo is a <strong>fold</strong> against an UTG open from the BB. It’s too weak to call or 3-bet and doesn’t have enough equity to continue.
+                <br><strong>Range Alignment:</strong> BB vs UTG calling range includes KQs, QJs, and some suited broadways, but KJo is too weak.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 5 -->
+    <div class="scenario">
+        <h2>Scenario 5: Facing a 3-Bet with 99</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> 99 in the Cutoff (CO)</p>
+        <p><strong>Action:</strong> Hero raises to $2.50, SB 3-bets to $11</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario5" data-option="A" onclick="handleAnswer('scenario5', 'A', 'B')">A) Fold</div>
+            <div class="option" data-scenario="scenario5" data-option="B" onclick="handleAnswer('scenario5', 'B', 'B')">B) Call</div>
+            <div class="option" data-scenario="scenario5" data-option="C" onclick="handleAnswer('scenario5', 'C', 'B')">C) 4-bet to $25</div>
+        </div>
+        <div id="scenario5-answer" class="hidden">
+            <div class="answer">Correct Answer: B) Call</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> 99 is a <strong>call</strong> against a SB 3-bet. It’s strong enough to continue and has good equity against SB’s 3-bet range.
+                <br><strong>Range Alignment:</strong> CO vs SB 3-bet calling range includes 99, TT, and some suited broadways.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 6 -->
+    <div class="scenario">
+        <h2>Scenario 6: Facing a Button Open with ATo</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> ATo in the Big Blind (BB)</p>
+        <p><strong>Action:</strong> BTN raises to $2.50</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario6" data-option="A" onclick="handleAnswer('scenario6', 'A', 'B')">A) Fold</div>
+            <div class="option" data-scenario="scenario6" data-option="B" onclick="handleAnswer('scenario6', 'B', 'B')">B) Call</div>
+            <div class="option" data-scenario="scenario6" data-option="C" onclick="handleAnswer('scenario6', 'C', 'B')">C) 3-bet to $13</div>
+        </div>
+        <div id="scenario6-answer" class="hidden">
+            <div class="answer">Correct Answer: B) Call</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> ATo is a <strong>call</strong> against a BTN open from the BB. It’s strong enough to continue but not strong enough to 3-bet.
+                <br><strong>Range Alignment:</strong> BB vs BTN calling range includes ATo, KJo, QJo, and some suited connectors.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 7 -->
+    <div class="scenario">
+        <h2>Scenario 7: Facing a 3-Bet with TT</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> TT in the Hijack (HJ)</p>
+        <p><strong>Action:</strong> Hero raises to $2.50, CO 3-bets to $7.50</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario7" data-option="A" onclick="handleAnswer('scenario7', 'A', 'B')">A) Fold</div>
+            <div class="option" data-scenario="scenario7" data-option="B" onclick="handleAnswer('scenario7', 'B', 'B')">B) Call</div>
+            <div class="option" data-scenario="scenario7" data-option="C" onclick="handleAnswer('scenario7', 'C', 'B')">C) 4-bet to $25</div>
+        </div>
+        <div id="scenario7-answer" class="hidden">
+            <div class="answer">Correct Answer: B) Call</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> TT is a <strong>call</strong> against a CO 3-bet. It’s strong enough to continue and has good equity against CO’s 3-bet range.
+                <br><strong>Range Alignment:</strong> HJ vs CO 3-bet calling range includes TT, JJ, and some suited broadways.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 8 -->
+    <div class="scenario">
+        <h2>Scenario 8: Facing a 4-Bet with AKs</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> AKs in the Cutoff (CO)</p>
+        <p><strong>Action:</strong> Hero raises to $2.50, SB 3-bets to $11, Hero 4-bets to $25, SB 5-bets to $100 (all-in)</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario8" data-option="A" onclick="handleAnswer('scenario8', 'A', 'B')">A) Fold</div>
+            <div class="option" data-scenario="scenario8" data-option="B" onclick="handleAnswer('scenario8', 'B', 'B')">B) Call</div>
+        </div>
+        <div id="scenario8-answer" class="hidden">
+            <div class="answer">Correct Answer: B) Call</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> AKs is a <strong>call</strong> against a 5-bet all-in. It’s strong enough to continue and has good equity against SB’s 5-bet range.
+                <br><strong>Range Alignment:</strong> CO vs SB 5-bet calling range includes AKs, QQ+, and some bluffs.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 9 -->
+    <div class="scenario">
+        <h2>Scenario 9: Facing an UTG Raise with 65s</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> 65s in the Big Blind (BB)</p>
+        <p><strong>Action:</strong> UTG raises to $2.50</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario9" data-option="A" onclick="handleAnswer('scenario9', 'A', 'A')">A) Fold</div>
+            <div class="option" data-scenario="scenario9" data-option="B" onclick="handleAnswer('scenario9', 'B', 'A')">B) Call</div>
+            <div class="option" data-scenario="scenario9" data-option="C" onclick="handleAnswer('scenario9', 'C', 'A')">C) 3-bet to $13</div>
+        </div>
+        <div id="scenario9-answer" class="hidden">
+            <div class="answer">Correct Answer: A) Fold</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> 65s is a <strong>fold</strong> against an UTG open from the BB. It’s too weak to call or 3-bet and doesn’t have enough equity to continue.
+                <br><strong>Range Alignment:</strong> BB vs UTG calling range includes suited broadways and some suited connectors, but 65s is too weak.
+            </div>
+        </div>
+    </div>
+
+    <!-- Scenario 10 -->
+    <div class="scenario">
+        <h2>Scenario 10: Facing a Button Open with QJs</h2>
+        <p><strong>Game:</strong> Online 0.50/1 - 6-Handed - 6.5% rake cap $2 - $100 deep</p>
+        <p><strong>Hero is dealt:</strong> QJs in the Big Blind (BB)</p>
+        <p><strong>Action:</strong> BTN raises to $2.50</p>
+        <div class="question">What should Hero do?</div>
+        <div class="options">
+            <div class="option" data-scenario="scenario10" data-option="A" onclick="handleAnswer('scenario10', 'A', 'B')">A) Fold</div>
+            <div class="option" data-scenario="scenario10" data-option="B" onclick="handleAnswer('scenario10', 'B', 'B')">B) Call</div>
+            <div class="option" data-scenario="scenario10" data-option="C" onclick="handleAnswer('scenario10', 'C', 'B')">C) 3-bet to $13</div>
+        </div>
+        <div id="scenario10-answer" class="hidden">
+            <div class="answer">Correct Answer: B) Call</div>
+            <div class="explanation">
+                <strong>Chart Check:</strong> QJs is a <strong>call</strong> against a BTN open from the BB. It’s strong enough to continue but not strong enough to 3-bet.
+                <br><strong>Range Alignment:</strong> BB vs BTN calling range includes QJs, KJo, and some suited connectors.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleAnswer(scenarioId, selectedOption, correctAnswer) {
+            const answerDiv = document.getElementById(`${scenarioId}-answer`);
+            const options = document.querySelectorAll(`#${scenarioId} .options .option`);
+
+            // Disable further clicks on options
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+            });
+
+            // Show the correct answer and explanation
+            answerDiv.classList.remove('hidden');
+
+            // Highlight the correct answer in green
+            const correctDiv = document.querySelector(`#${scenarioId} .options .option[data-option='${correctAnswer}']`);
+            correctDiv.classList.add('correct-answer');
+
+            // Highlight the selected option if it's wrong
+            if (selectedOption !== correctAnswer) {
+                const selectedDiv = document.querySelector(`#${scenarioId} .options .option[data-option='${selectedOption}']`);
+                selectedDiv.classList.add('wrong-answer');
+            }
+        }
+    </script>
+
+</body>
+</html>
