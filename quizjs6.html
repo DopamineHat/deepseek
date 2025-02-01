@@ -8,39 +8,48 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            line-height: 1.6;
         }
         .scenario {
             margin-bottom: 30px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .options {
-            margin: 10px 0;
+            margin: 15px 0;
         }
         .option {
             cursor: pointer;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            transition: all 0.3s ease;
         }
         .answer {
             color: #2e7d32;
             font-weight: bold;
-            margin-top: 15px;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 4px;
         }
         .explanation {
             color: #666;
             margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
         }
         .correct-answer {
-            background-color: #e8f5e9;
-            border-color: #2e7d32;
+            background: #e8f5e9 !important;
+            border-color: #2e7d32 !important;
         }
         .wrong-answer {
-            background-color: #ffebee;
-            border-color: #d32f2f;
+            background: #ffebee !important;
+            border-color: #d32f2f !important;
         }
         .hidden {
             display: none;
@@ -55,11 +64,11 @@
         <h3>Scenario 1: AQs vs UTG Raise</h3>
         <p>Hero holds AQs in HJ. UTG opens 2.5x.</p>
         <div class="options">
-            <div class="option" data-scenario="1" onclick="handleAnswer(1, this)">A) Fold</div>
-            <div class="option" data-scenario="1" onclick="handleAnswer(1, this)">B) 3-bet to 7.5x</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) 3-bet to 7.5x</div>
         </div>
         <div class="answer hidden">Correct Answer: B) 3-bet to 7.5x</div>
-        <div class="explanation hidden">AQs is a mandatory 3-bet vs UTG open from HJ.</div>
+        <div class="explanation hidden">AQs is a mandatory 3-bet against UTG opens from the Hijack. It has good equity against UTG's opening range and we want to isolate the original raiser.</div>
     </div>
 
     <!-- Scenario 2 -->
@@ -67,11 +76,11 @@
         <h3>Scenario 2: 77 vs BTN Open</h3>
         <p>Hero holds 77 in SB. BTN opens 2.5x.</p>
         <div class="options">
-            <div class="option" data-scenario="2" onclick="handleAnswer(2, this)">A) Fold</div>
-            <div class="option" data-scenario="2" onclick="handleAnswer(2, this)">B) 3-bet to 11x</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) 3-bet to 11x</div>
         </div>
         <div class="answer hidden">Correct Answer: B) 3-bet to 11x</div>
-        <div class="explanation hidden">77 is a 3-bet for value vs BTN open from SB.</div>
+        <div class="explanation hidden">77 has enough equity to 3-bet for value against BTN's opening range. We want to deny equity to weaker hands and play a bigger pot with our pair.</div>
     </div>
 
     <!-- Scenario 3 -->
@@ -79,12 +88,12 @@
         <h3>Scenario 3: KQs vs 3-bet</h3>
         <p>Hero opens KQs in CO, SB 3-bets.</p>
         <div class="options">
-            <div class="option" data-scenario="3" onclick="handleAnswer(3, this)">A) Fold</div>
-            <div class="option" data-scenario="3" onclick="handleAnswer(3, this)">B) Call</div>
-            <div class="option" data-scenario="3" onclick="handleAnswer(3, this)">C) 4-bet</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call</div>
+            <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet</div>
         </div>
         <div class="answer hidden">Correct Answer: B) Call</div>
-        <div class="explanation hidden">KQs has good equity to call vs SB 3-bet range.</div>
+        <div class="explanation hidden">KQs has sufficient equity to call against SB's 3-betting range. It flops well and has good playability post-flop.</div>
     </div>
 
     <!-- Scenario 4 -->
@@ -92,12 +101,12 @@
         <h3>Scenario 4: KJo vs UTG</h3>
         <p>Hero holds KJo in BB vs UTG open.</p>
         <div class="options">
-            <div class="option" data-scenario="4" onclick="handleAnswer(4, this)">A) Fold</div>
-            <div class="option" data-scenario="4" onclick="handleAnswer(4, this)">B) Call</div>
-            <div class="option" data-scenario="4" onclick="handleAnswer(4, this)">C) 3-bet</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call</div>
+            <div class="option" data-option="C" onclick="handleAnswer(this)">C) 3-bet</div>
         </div>
         <div class="answer hidden">Correct Answer: A) Fold</div>
-        <div class="explanation hidden">KJo is too weak to continue vs UTG range.</div>
+        <div class="explanation hidden">KJo is too weak to continue against UTG's strong opening range. The reverse implied odds make this a clear fold.</div>
     </div>
 
     <!-- Scenario 5 -->
@@ -105,11 +114,11 @@
         <h3>Scenario 5: 99 vs 3-bet</h3>
         <p>Hero opens 99 in CO, SB 3-bets.</p>
         <div class="options">
-            <div class="option" data-scenario="5" onclick="handleAnswer(5, this)">A) Fold</div>
-            <div class="option" data-scenario="5" onclick="handleAnswer(5, this)">B) Call</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call</div>
         </div>
         <div class="answer hidden">Correct Answer: B) Call</div>
-        <div class="explanation hidden">99 has good equity to call vs SB 3-bet range.</div>
+        <div class="explanation hidden">99 has enough equity to continue against SB's 3-betting range. Folding would be too tight here given the price we're getting.</div>
     </div>
 
     <!-- Scenario 6 -->
@@ -117,11 +126,11 @@
         <h3>Scenario 6: ATo vs BTN</h3>
         <p>Hero holds ATo in BB vs BTN open.</p>
         <div class="options">
-            <div class="option" data-scenario="6" onclick="handleAnswer(6, this)">A) Fold</div>
-            <div class="option" data-scenario="6" onclick="handleAnswer(6, this)">B) Call</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call</div>
         </div>
         <div class="answer hidden">Correct Answer: B) Call</div>
-        <div class="explanation hidden">ATo is strong enough to defend vs BTN open.</div>
+        <div class="explanation hidden">ATo is strong enough to defend against BTN's wide opening range. We have sufficient equity to continue in position.</div>
     </div>
 
     <!-- Scenario 7 -->
@@ -129,11 +138,11 @@
         <h3>Scenario 7: TT vs 3-bet</h3>
         <p>Hero opens TT in HJ, CO 3-bets.</p>
         <div class="options">
-            <div class="option" data-scenario="7" onclick="handleAnswer(7, this)">A) Fold</div>
-            <div class="option" data-scenario="7" onclick="handleAnswer(7, this)">B) Call</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call</div>
         </div>
         <div class="answer hidden">Correct Answer: B) Call</div>
-        <div class="explanation hidden">TT has good equity vs CO 3-bet range.</div>
+        <div class="explanation hidden">TT is too strong to fold against a CO 3-bet. We have good equity against their value range and potential fold equity.</div>
     </div>
 
     <!-- Scenario 8 -->
@@ -141,11 +150,11 @@
         <h3>Scenario 8: AKs vs 5-bet</h3>
         <p>4-bet pot, facing 5-bet all-in with AKs.</p>
         <div class="options">
-            <div class="option" data-scenario="8" onclick="handleAnswer(8, this)">A) Fold</div>
-            <div class="option" data-scenario="8" onclick="handleAnswer(8, this)">B) Call</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call</div>
         </div>
         <div class="answer hidden">Correct Answer: B) Call</div>
-        <div class="explanation hidden">AKs has enough equity vs QQ+/AK range.</div>
+        <div class="explanation hidden">AKs has sufficient equity against QQ+/AK range. We're getting the right price to call all-in preflop.</div>
     </div>
 
     <!-- Scenario 9 -->
@@ -153,11 +162,11 @@
         <h3>Scenario 9: 65s vs UTG</h3>
         <p>Hero holds 65s in BB vs UTG open.</p>
         <div class="options">
-            <div class="option" data-scenario="9" onclick="handleAnswer(9, this)">A) Fold</div>
-            <div class="option" data-scenario="9" onclick="handleAnswer(9, this)">B) Call</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call</div>
         </div>
         <div class="answer hidden">Correct Answer: A) Fold</div>
-        <div class="explanation hidden">65s is too weak vs UTG's strong range.</div>
+        <div class="explanation hidden">65s is too weak against UTG's strong range. The suitedness doesn't compensate for the positional disadvantage.</div>
     </div>
 
     <!-- Scenario 10 -->
@@ -165,39 +174,40 @@
         <h3>Scenario 10: QJs vs BTN</h3>
         <p>Hero holds QJs in BB vs BTN open.</p>
         <div class="options">
-            <div class="option" data-scenario="10" onclick="handleAnswer(10, this)">A) Fold</div>
-            <div class="option" data-scenario="10" onclick="handleAnswer(10, this)">B) Call</div>
+            <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call</div>
         </div>
         <div class="answer hidden">Correct Answer: B) Call</div>
-        <div class="explanation hidden">QJs has good playability postflop.</div>
+        <div class="explanation hidden">QJs has excellent playability postflop with its straight and flush potential. Good equity to defend against BTN's wide range.</div>
     </div>
 
     <script>
-        function handleAnswer(scenarioNumber, clickedOption) {
+        function handleAnswer(clickedOption) {
             const scenario = clickedOption.closest('.scenario');
             const options = scenario.querySelectorAll('.option');
-            const answer = scenario.querySelector('.answer');
-            const explanation = scenario.querySelector('.explanation');
+            const answerDiv = scenario.querySelector('.answer');
+            const explanationDiv = scenario.querySelector('.explanation');
 
             // Disable further clicks
             options.forEach(opt => opt.style.pointerEvents = 'none');
 
-            // Get correct answer letter from answer text
-            const correctLetter = answer.textContent.match(/[A-C]/)[0];
+            // Parse correct answer from answer text
+            const correctAnswer = answerDiv.textContent.match(/Correct Answer: ([A-C])/)[1];
             
             // Highlight answers
             options.forEach(opt => {
-                const optLetter = opt.textContent[0];
-                if(optLetter === correctLetter) {
+                const isCorrect = opt.dataset.option === correctAnswer;
+                if(isCorrect) {
                     opt.classList.add('correct-answer');
-                } else if(opt === clickedOption) {
+                }
+                else if(opt === clickedOption) {
                     opt.classList.add('wrong-answer');
                 }
             });
 
             // Show answer and explanation
-            answer.classList.remove('hidden');
-            explanation.classList.remove('hidden');
+            answerDiv.classList.remove('hidden');
+            explanationDiv.classList.remove('hidden');
         }
     </script>
 </body>
