@@ -59,186 +59,414 @@
             margin-top: 8px;
             font-weight: 500;
         }
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        .next-btn {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+	    font-size: 40px;
+        }
+     .hidden {
+        display: none;
+    }       
+        .next-btn:hover {
+            background: #45a049;
+        }
+        
+        .scenario {
+            display: none;
+        }
+        
+        .scenario.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <h1>Complete Poker Preflop Quiz</h1>
 
+
     <!-- Scenario 1 -->
-    <div class="scenario">
+    <div class="scenario active">
         <h3>Scenario 1: AQs vs UTG Raise</h3>
-        <p>Hero holds AQs in HJ. <span class="bet-sizing">UTG opens 2.5x</span>.</p>
+        <p>Hero holds AQs in HJ. <span class="bet-sizing">UTG opens 2.5bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) 3-bet to <span class="bet-sizing">7.5x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) 3-bet to <span class="bet-sizing">7.5bb</span></div>
         </div>
-        <div class="answer hidden">Correct Answer: B) 3-bet to 7.5x</div>
+        <div class="answer hidden">Correct Answer: B) 3-bet to 7.5bb</div>
         <div class="explanation hidden">
-            <strong>Bet Sizing Logic:</strong> 3-bet to 3x open + 1x per caller (UTG open 2.5x → 7.5x total)<br>
-            <span class="range-alignment">Range Alignment: HJ 3-bet vs UTG (7.5x): AQs+, AK, JJ+, A5s-A2s</span>
+            <strong>Bet Sizing Logic:</strong> 3bb open + 1bb per caller (UTG open 2.5bb → 7.5bb total)<br>
+            <span class="range-alignment">Range Alignment: HJ 3-bet vs UTG (7.5bb): AQs+, AK, JJ+, A5s-A2s</span>
         </div>
     </div>
 
     <!-- Scenario 2 -->
     <div class="scenario">
         <h3>Scenario 2: 77 vs BTN Open</h3>
-        <p>Hero holds 77 in SB. <span class="bet-sizing">BTN opens 2.5x</span>.</p>
+        <p>Hero holds 77 in SB. <span class="bet-sizing">BTN opens 2.5bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) 3-bet to <span class="bet-sizing">11x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) 3-bet to <span class="bet-sizing">11bb</span></div>
         </div>
-        <div class="answer hidden">Correct Answer: B) 3-bet to 11x</div>
+        <div class="answer hidden">Correct Answer: B) 3-bet to 11bb</div>
         <div class="explanation hidden">
-            <strong>Bet Sizing Logic:</strong> SB 3-bet vs BTN (4x open + 1x) → 4x2.5 + 1x = 11x<br>
-            <span class="range-alignment">SB 3-bet vs BTN (11x): 77+, AQo+, KJs+, 54s-98s</span>
+            <strong>Bet Sizing Logic:</strong> SB 3-bet vs BTN (4x open + 1bb) → 4×2.5bb + 1bb = 11bb<br>
+            <span class="range-alignment">SB 3-bet vs BTN (11bb): 77+, AQo+, KJs+, 54s-98s</span>
         </div>
     </div>
 
     <!-- Scenario 3 -->
     <div class="scenario">
         <h3>Scenario 3: KQs vs 3-bet</h3>
-        <p>Hero opens <span class="bet-sizing">2.5x</span> in CO. SB 3-bets to <span class="bet-sizing">11x</span>.</p>
+        <p>Hero opens <span class="bet-sizing">2.5bb</span> in CO. SB 3-bets to <span class="bet-sizing">11bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">11x</span></div>
-            <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to <span class="bet-sizing">25x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">11bb</span></div>
+            <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to <span class="bet-sizing">25bb</span></div>
         </div>
-        <div class="answer hidden">Correct Answer: B) Call 11x</div>
+        <div class="answer hidden">Correct Answer: B) Call 11bb</div>
         <div class="explanation hidden">
             <strong>Bet Sizing Logic:</strong> Standard 3-bet defense (25-30% equity needed)<br>
-            <span class="range-alignment">CO vs SB 3-bet (11x) calls: JJ-TT, AQs-AJs, KQs, 76s-98s</span>
+            <span class="range-alignment">CO vs SB 3-bet (11bb) calls: JJ-TT, AQs-AJs, KQs, 76s-98s</span>
         </div>
     </div>
 
     <!-- Scenario 4 -->
     <div class="scenario">
         <h3>Scenario 4: KJo vs UTG</h3>
-        <p>Hero holds KJo in BB. <span class="bet-sizing">UTG opens 2.5x</span>.</p>
+        <p>Hero holds KJo in BB. <span class="bet-sizing">UTG opens 2.5bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5x</span></div>
-            <div class="option" data-option="C" onclick="handleAnswer(this)">C) 3-bet to <span class="bet-sizing">13x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
+            <div class="option" data-option="C" onclick="handleAnswer(this)">C) 3-bet to <span class="bet-sizing">13bb</span></div>
         </div>
         <div class="answer hidden">Correct Answer: A) Fold</div>
         <div class="explanation hidden">
-            <strong>Bet Sizing Logic:</strong> MDF requires 27% defense vs 2.5x open<br>
-            <span class="range-alignment">BB vs UTG (2.5x) continuing: 66+, AQs+, KQs, QTs+</span>
+            <strong>Bet Sizing Logic:</strong> MDF requires 27% defense vs 2.5bb open<br>
+            <span class="range-alignment">BB vs UTG (2.5bb) continuing: 66+, AQs+, KQs, QTs+</span>
         </div>
     </div>
 
     <!-- Scenario 5 -->
     <div class="scenario">
         <h3>Scenario 5: 99 vs 3-bet</h3>
-        <p>Hero opens <span class="bet-sizing">2.5x</span> in CO. SB 3-bets to <span class="bet-sizing">11x</span>.</p>
+        <p>Hero opens <span class="bet-sizing">2.5bb</span> in CO. SB 3-bets to <span class="bet-sizing">11bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">11x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">11bb</span></div>
         </div>
-        <div class="answer hidden">Correct Answer: B) Call 11x</div>
+        <div class="answer hidden">Correct Answer: B) Call 11bb</div>
         <div class="explanation hidden">
-            <strong>Bet Sizing Logic:</strong> 35% equity needed vs 11x 3-bet<br>
-            <span class="range-alignment">CO vs SB 3-bet (11x) calls: 99-JJ, AQo, KQs, 76s-98s</span>
+            <strong>Bet Sizing Logic:</strong> 35% equity needed vs 11bb 3-bet<br>
+            <span class="range-alignment">CO vs SB 3-bet (11bb) calls: 99-JJ, AQo, KQs, 76s-98s</span>
         </div>
     </div>
 
     <!-- Scenario 6 -->
     <div class="scenario">
         <h3>Scenario 6: ATo vs BTN</h3>
-        <p>Hero holds ATo in BB. <span class="bet-sizing">BTN opens 2.5x</span>.</p>
+        <p>Hero holds ATo in BB. <span class="bet-sizing">BTN opens 2.5bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
         </div>
-        <div class="answer hidden">Correct Answer: B) Call 2.5x</div>
+        <div class="answer hidden">Correct Answer: B) Call 2.5bb</div>
         <div class="explanation hidden">
-            <strong>Bet Sizing Logic:</strong> MDF requires 40% defense vs 2.5x<br>
-            <span class="range-alignment">BB vs BTN (2.5x) defending: 22+, A2s+, K9s+, Q9s+</span>
+            <strong>Bet Sizing Logic:</strong> MDF requires 40% defense vs 2.5bb<br>
+            <span class="range-alignment">BB vs BTN (2.5bb) defending: 22+, A2s+, K9s+, Q9s+</span>
         </div>
     </div>
 
     <!-- Scenario 7 -->
     <div class="scenario">
         <h3>Scenario 7: TT vs 3-bet</h3>
-        <p>Hero opens <span class="bet-sizing">2.5x</span> in HJ. CO 3-bets to <span class="bet-sizing">9x</span>.</p>
+        <p>Hero opens <span class="bet-sizing">2.5bb</span> in HJ. CO 3-bets to <span class="bet-sizing">9bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">9x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">9bb</span></div>
         </div>
-        <div class="answer hidden">Correct Answer: B) Call 9x</div>
+        <div class="answer hidden">Correct Answer: B) Call 9bb</div>
         <div class="explanation hidden">
-            <strong>Bet Sizing Logic:</strong> 33% equity needed vs 3.6x 3-bet (9x/2.5x)<br>
-            <span class="range-alignment">HJ vs CO 3-bet (9x) calls: TT-QQ, AQs-AJs, KQs</span>
+            <strong>Bet Sizing Logic:</strong> 33% equity needed vs 3.6× 3-bet (9bb/2.5bb)<br>
+            <span class="range-alignment">HJ vs CO 3-bet (9bb) calls: TT-QQ, AQs-AJs, KQs</span>
         </div>
     </div>
 
     <!-- Scenario 8 -->
     <div class="scenario">
         <h3>Scenario 8: AKs vs 5-bet</h3>
-        <p>Hero 4-bets to <span class="bet-sizing">25x</span>. SB 5-bet shoves <span class="bet-sizing">100x</span>.</p>
+        <p>Hero 4-bets to <span class="bet-sizing">25bb</span>. SB 5-bet shoves <span class="bet-sizing">100bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">100x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">100bb</span></div>
         </div>
-        <div class="answer hidden">Correct Answer: B) Call 100x</div>
+        <div class="answer hidden">Correct Answer: B) Call 100bb</div>
         <div class="explanation hidden">
-            <strong>Bet Sizing Logic:</strong> 30% equity needed vs 4x 5-bet (100x/25x)<br>
-            <span class="range-alignment">5-bet shove (100x) range: QQ+, AKs (bluffs: A5s-A2s 10%)</span>
+            <strong>Bet Sizing Logic:</strong> 30% equity needed vs 4× 5-bet (100bb/25bb)<br>
+            <span class="range-alignment">5-bet shove (100bb) range: QQ+, AKs (bluffs: A5s-A2s 10%)</span>
         </div>
     </div>
 
     <!-- Scenario 9 -->
     <div class="scenario">
         <h3>Scenario 9: 65s vs UTG</h3>
-        <p>Hero holds 65s in BB. <span class="bet-sizing">UTG opens 2.5x</span>.</p>
+        <p>Hero holds 65s in BB. <span class="bet-sizing">UTG opens 2.5bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
         </div>
         <div class="answer hidden">Correct Answer: A) Fold</div>
         <div class="explanation hidden">
             <strong>Bet Sizing Logic:</strong> Below MDF threshold (needs 27% equity)<br>
-            <span class="range-alignment">BB vs UTG (2.5x) continues: 88+, ATs+, KJs+</span>
+            <span class="range-alignment">BB vs UTG (2.5bb) continues: 88+, ATs+, KJs+</span>
         </div>
     </div>
 
     <!-- Scenario 10 -->
     <div class="scenario">
         <h3>Scenario 10: QJs vs BTN</h3>
-        <p>Hero holds QJs in BB. <span class="bet-sizing">BTN opens 2.5x</span>.</p>
+        <p>Hero holds QJs in BB. <span class="bet-sizing">BTN opens 2.5bb</span>.</p>
         <div class="options">
             <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5x</span></div>
+            <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
         </div>
-        <div class="answer hidden">Correct Answer: B) Call 2.5x</div>
+        <div class="answer hidden">Correct Answer: B) Call 2.5bb</div>
         <div class="explanation hidden">
             <strong>Bet Sizing Logic:</strong> Meets MDF (40% defense) with 35%+ equity<br>
-            <span class="range-alignment">BB vs BTN (2.5x) defending: QJs+, 54s-98s, A2s+</span>
+            <span class="range-alignment">BB vs BTN (2.5bb) defending: QJs+, 54s-98s, A2s+</span>
         </div>
     </div>
+<!-- Scenario 11 -->
+<div class="scenario">
+    <h3>Scenario 11: AKo vs BTN Open</h3>
+    <p>Hero holds AKo in SB. <span class="bet-sizing">BTN opens 2.5bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) 3-bet to <span class="bet-sizing">11bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: B) 3-bet to 11bb</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> AKo is a mandatory 3-bet vs BTN open<br>
+        <span class="range-alignment">SB 3-bet vs BTN: 99+, AQo+, A5s+, KQs, QJs</span>
+    </div>
+</div>
 
-    <script>
-        // Maintain previous JavaScript logic
-        function handleAnswer(clickedOption) {
-            const scenario = clickedOption.closest('.scenario');
-            const options = scenario.querySelectorAll('.option');
-            const answerDiv = scenario.querySelector('.answer');
-            const explanationDiv = scenario.querySelector('.explanation');
+<!-- Scenario 12 -->
+<div class="scenario">
+    <h3>Scenario 12: 22 vs UTG Raise</h3>
+    <p>Hero holds 22 in BB. <span class="bet-sizing">UTG opens 2.5bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: B) Call 2.5bb</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> Small pairs (22-66) call vs UTG<br>
+        <span class="range-alignment">BB vs UTG calls: 22-66, KTs+, QTs+, 76s+</span>
+    </div>
+</div>
 
-            options.forEach(opt => opt.style.pointerEvents = 'none');
-            
-            const correctAnswer = answerDiv.textContent.match(/Correct Answer: ([A-C])/)[1];
-            
-            options.forEach(opt => {
-                const isCorrect = opt.dataset.option === correctAnswer;
-                const isClicked = opt === clickedOption;
-                
-                opt.classList.toggle('correct-answer', isCorrect);
-                opt.classList.toggle('wrong-answer', isClicked && !isCorrect);
-            });
+<!-- Scenario 13 -->
+<div class="scenario">
+    <h3>Scenario 13: AQo vs CO 3-bet</h3>
+    <p>Hero opens <span class="bet-sizing">2.5bb</span> in HJ. CO 3-bets to <span class="bet-sizing">7.5bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">7.5bb</span></div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to <span class="bet-sizing">25bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: C) 4-bet to 25bb</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> AQo 4-bet vs CO 3-bet<br>
+        <span class="range-alignment">HJ 4-bet vs CO: JJ+, AK, AQs</span>
+    </div>
+</div>
 
-            answerDiv.classList.remove('hidden');
-            explanationDiv.classList.remove('hidden');
+<!-- Scenario 14 -->
+<div class="scenario">
+    <h3>Scenario 14: KQs vs SB Squeeze</h3>
+    <p>Hero opens <span class="bet-sizing">2.5bb</span> in CO. SB 3-bets to <span class="bet-sizing">11bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">11bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: B) Call 11bb</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> KQs calls vs SB squeeze<br>
+        <span class="range-alignment">CO vs SB 3-bet calls: TT-JJ, AQ+, KQs</span>
+    </div>
+</div>
+
+<!-- Scenario 15 -->
+<div class="scenario">
+    <h3>Scenario 15: 98s vs BTN Open</h3>
+    <p>Hero holds 98s in BB. <span class="bet-sizing">BTN opens 2.5bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: B) Call 2.5bb</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> 98s defends vs BTN<br>
+        <span class="range-alignment">BB vs BTN calls: 54s+, J9s+, suited broadways</span>
+    </div>
+</div>
+
+<!-- Scenario 16 -->
+<div class="scenario">
+    <h3>Scenario 16: JJ vs UTG 3-bet</h3>
+    <p>Hero opens <span class="bet-sizing">2.5bb</span> in CO. UTG 3-bets to <span class="bet-sizing">7.5bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">7.5bb</span></div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to <span class="bet-sizing">25bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: C) 4-bet to 25bb</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> JJ 4-bet vs UTG<br>
+        <span class="range-alignment">CO 4-bet vs UTG: QQ+, AK</span>
+    </div>
+</div>
+
+<!-- Scenario 17 -->
+<div class="scenario">
+    <h3>Scenario 17: 72o vs HJ Open</h3>
+    <p>Hero holds 72o in BB. <span class="bet-sizing">HJ opens 2.5bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: A) Fold</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> 72o auto-folds<br>
+        <span class="range-alignment">BB vs HJ folds: bottom 50% of hands</span>
+    </div>
+</div>
+
+<!-- Scenario 18 -->
+<div class="scenario">
+    <h3>Scenario 18: AKs vs 5-bet</h3>
+    <p>Hero 4-bets to <span class="bet-sizing">25bb</span>. CO 5-bet shoves <span class="bet-sizing">100bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">100bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: B) Call 100bb</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> AKs calls 5-bet shove<br>
+        <span class="range-alignment">5-bet range: QQ+, AK</span>
+    </div>
+</div>
+
+<!-- Scenario 19 -->
+<div class="scenario">
+    <h3>Scenario 19: QTo vs SB Open</h3>
+    <p>Hero holds QTo in BB. <span class="bet-sizing">SB opens 2.5bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: A) Fold</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> QTo folds vs SB<br>
+        <span class="range-alignment">SB opens: 22+, A2s+, K9s+, QTs+</span>
+    </div>
+</div>
+
+<!-- Scenario 20 -->
+<div class="scenario">
+    <h3>Scenario 20: A5s vs BTN 3-bet</h3>
+    <p>Hero opens <span class="bet-sizing">2.5bb</span> in SB. BTN 3-bets to <span class="bet-sizing">7.5bb</span>.</p>
+    <div class="options">
+        <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">7.5bb</span></div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to <span class="bet-sizing">25bb</span></div>
+    </div>
+    <div class="answer hidden">Correct Answer: C) 4-bet to 25bb</div>
+    <div class="explanation hidden">
+        <strong>Chart Check:</strong> A5s 4-bet bluff<br>
+        <span class="range-alignment">SB 4-bet bluffs: A5s-A2s, 76s-54s</span>
+    </div>
+</div>
+
+    <div class="navigation">
+        <button class="next-btn hidden" onclick="showNextScenario()">Next ❯</button>
+    </div>
+<script>
+    let currentScenarioIndex = 0;
+    let score = 0;
+    const totalQuestions = 20; // Update this if adding more scenarios
+    const scenarios = Array.from(document.querySelectorAll('.scenario'));
+
+    function handleAnswer(clickedOption) {
+        const scenario = clickedOption.closest('.scenario');
+        const options = scenario.querySelectorAll('.option');
+        const answerDiv = scenario.querySelector('.answer');
+        const explanationDiv = scenario.querySelector('.explanation');
+        const nextBtn = document.querySelector('.next-btn');
+
+        options.forEach(opt => opt.style.pointerEvents = 'none');
+        
+        const correctAnswer = answerDiv.textContent.match(/Correct Answer: ([A-C])/)[1];
+        const selectedAnswer = clickedOption.dataset.option;
+        
+        // Update score if correct
+        if(selectedAnswer === correctAnswer) {
+            score++;
         }
-    </script>
+
+        options.forEach(opt => {
+            const isCorrect = opt.dataset.option === correctAnswer;
+            const isClicked = opt === clickedOption;
+            
+            opt.classList.toggle('correct-answer', isCorrect);
+            opt.classList.toggle('wrong-answer', isClicked && !isCorrect);
+        });
+
+        answerDiv.classList.remove('hidden');
+        explanationDiv.classList.remove('hidden');
+        nextBtn.classList.remove('hidden');
+    }
+
+    function showNextScenario() {
+        scenarios[currentScenarioIndex].classList.remove('active');
+        currentScenarioIndex++;
+        
+        if(currentScenarioIndex < scenarios.length) {
+            scenarios[currentScenarioIndex].classList.add('active');
+            document.querySelector('.next-btn').classList.add('hidden');
+        } else {
+            const accuracy = ((score / totalQuestions) * 100).toFixed(1);
+            document.body.innerHTML = `
+                <div style="text-align: center; padding: 50px">
+                    <h1>🎉 Quiz Complete! 🎉</h1>
+                    <div style="font-size: 1.5em; margin: 20px 0">
+                        <div>Score: ${score}/${totalQuestions}</div>
+                        <div>Accuracy: ${accuracy}%</div>
+                    </div>
+                    <div style="margin-top: 30px; color: #666">
+                        ${getPerformanceMessage(accuracy)}
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    function getPerformanceMessage(accuracy) {
+        if(accuracy >= 90) return "🏆 Poker Master! Perfect execution!";
+        if(accuracy >= 75) return "🎯 Excellent! Solid preflop strategy!";
+        if(accuracy >= 60) return "👍 Good effort! Review the missed scenarios!";
+        return "📚 Keep studying! Review the charts and try again!";
+    }
+</script>
 </body>
 </html>
