@@ -247,140 +247,225 @@
     </div>
 <!-- Scenario 11 -->
 <div class="scenario">
-    <h3>Scenario 11: AKo vs BTN Open</h3>
-    <p>Hero holds AKo in SB. <span class="bet-sizing">BTN opens 2.5bb</span>.</p>
+    <h3>Scenario 11: Facing HJ Open with 77 (BB)</h3>
+    <p>Game: 0.50/1 - 6-Handed - 100bb Effective<br>
+    Hero is dealt: 77 in BB<br>
+    Action:<br>
+    <span style="color: #666">UTG folds</span><br>
+    <span class="bet-sizing">HJ raises to 2.5bb</span><br>
+    <span style="color: #666">CO folds</span><br>
+    <span style="color: #666">BTN folds</span><br>
+    <span style="color: #666">SB folds</span><br>
+    Hero (BB): ?</p>
     <div class="options">
         <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-        <div class="option" data-option="B" onclick="handleAnswer(this)">B) 3-bet to <span class="bet-sizing">11bb</span></div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call 2.5bb</div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 3-bet to 13bb</div>
     </div>
-    <div class="answer hidden">Correct Answer: B) 3-bet to 11bb</div>
+    <div class="answer hidden">Correct Answer: B) Call</div>
     <div class="explanation hidden">
-        <strong>Chart Check:</strong> AKo is a mandatory 3-bet vs BTN open<br>
-        <span class="range-alignment">SB 3-bet vs BTN: 99+, AQo+, A5s+, KQs, QJs</span>
+        <span class="range-alignment">BB vs HJ calling range: 22-77, suited connectors (54s+), suited broadways (KTs+)</span>
+        <span class="range-alignment">HJ opening range: ~20% (55+, A2s+, K9s+, QTs+, JTs, T9s, 98s, AJo+, KQo)</span>
     </div>
 </div>
 
 <!-- Scenario 12 -->
 <div class="scenario">
-    <h3>Scenario 12: 22 vs UTG Raise</h3>
-    <p>Hero holds 22 in BB. <span class="bet-sizing">UTG opens 2.5bb</span>.</p>
+    <h3>Scenario 12: Facing BTN 3-Bet with 76s (CO)</h3>
+    <p>Game: 0.50/1 - 6-Handed - 100bb Effective<br>
+    Hero is dealt: 76s in CO<br>
+    Action:<br>
+    <span style="color: #666">UTG folds</span><br>
+    <span style="color: #666">HJ folds</span><br>
+    <span class="bet-sizing">Hero (CO) raises to 2.5bb</span><br>
+    <span class="bet-sizing">BTN 3-bets to 7.5bb</span><br>
+    <span style="color: #666">SB folds</span><br>
+    <span style="color: #666">BB folds</span><br>
+    Hero (CO): ?</p>
     <div class="options">
         <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call 7.5bb</div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to 25bb</div>
     </div>
-    <div class="answer hidden">Correct Answer: B) Call 2.5bb</div>
+    <div class="answer hidden">Correct Answer: A) Fold</div>
     <div class="explanation hidden">
-        <strong>Chart Check:</strong> Small pairs (22-66) call vs UTG<br>
-        <span class="range-alignment">BB vs UTG calls: 22-66, KTs+, QTs+, 76s+</span>
+        <span class="range-alignment">CO vs BTN 3-bet folding range: 76s, J8o</span>
+        <span class="range-alignment">BTN 3-bet range vs CO: 99+, AQ+, KQs, A5s+ (8% of hands)</span>
     </div>
 </div>
 
 <!-- Scenario 13 -->
 <div class="scenario">
-    <h3>Scenario 13: AQo vs CO 3-bet</h3>
-    <p>Hero opens <span class="bet-sizing">2.5bb</span> in HJ. CO 3-bets to <span class="bet-sizing">7.5bb</span>.</p>
+    <h3>Scenario 13: Facing UTG Open with KTs (BB)</h3>
+    <p>Game: 0.50/1 - 6-Handed - 100bb Effective<br>
+    Hero is dealt: KTs in BB<br>
+    Action:<br>
+    <span class="bet-sizing">UTG raises to 2.5bb</span><br>
+    <span style="color: #666">HJ folds</span><br>
+    <span style="color: #666">CO folds</span><br>
+    <span style="color: #666">BTN folds</span><br>
+    <span style="color: #666">SB folds</span><br>
+    Hero (BB): ?</p>
     <div class="options">
         <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">7.5bb</span></div>
-        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to <span class="bet-sizing">25bb</span></div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call 2.5bb</div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 3-bet to 13bb</div>
     </div>
-    <div class="answer hidden">Correct Answer: C) 4-bet to 25bb</div>
+    <div class="answer hidden">Correct Answer: B) Call</div>
     <div class="explanation hidden">
-        <strong>Chart Check:</strong> AQo 4-bet vs CO 3-bet<br>
-        <span class="range-alignment">HJ 4-bet vs CO: JJ+, AK, AQs</span>
+        <span class="range-alignment">BB vs UTG calling range: KTs+, QTs+, 22-66, suited connectors (76s+)</span>
+        <span class="range-alignment">UTG opening range: ~12% (77+, ATo+, KJo+, QJs, JTs, T9s)</span>
     </div>
 </div>
 
 <!-- Scenario 14 -->
 <div class="scenario">
-    <h3>Scenario 14: KQs vs SB Squeeze</h3>
-    <p>Hero opens <span class="bet-sizing">2.5bb</span> in CO. SB 3-bets to <span class="bet-sizing">11bb</span>.</p>
+    <h3>Scenario 14: Facing CO 3-Bet with JJ (HJ)</h3>
+    <p>Game: 0.50/1 - 6-Handed - 100bb Effective<br>
+    Hero is dealt: JJ in HJ<br>
+    Action:<br>
+    <span style="color: #666">UTG folds</span><br>
+    <span class="bet-sizing">Hero (HJ) raises to 2.5bb</span><br>
+    <span class="bet-sizing">CO 3-bets to 7.5bb</span><br>
+    <span style="color: #666">BTN folds</span><br>
+    <span style="color: #666">SB folds</span><br>
+    <span style="color: #666">BB folds</span><br>
+    Hero (HJ): ?</p>
     <div class="options">
         <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">11bb</span></div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call 7.5bb</div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to 25bb</div>
     </div>
-    <div class="answer hidden">Correct Answer: B) Call 11bb</div>
+    <div class="answer hidden">Correct Answer: C) 4-bet to 25bb</div>
     <div class="explanation hidden">
-        <strong>Chart Check:</strong> KQs calls vs SB squeeze<br>
-        <span class="range-alignment">CO vs SB 3-bet calls: TT-JJ, AQ+, KQs</span>
+        <span class="range-alignment">HJ 4-bet range vs CO: JJ+, AK (4% of hands)</span>
+        <span class="range-alignment">CO 3-bet range vs HJ: 99+, AQ+, KQs (8% of hands)</span>
     </div>
 </div>
 
 <!-- Scenario 15 -->
 <div class="scenario">
-    <h3>Scenario 15: 98s vs BTN Open</h3>
-    <p>Hero holds 98s in BB. <span class="bet-sizing">BTN opens 2.5bb</span>.</p>
+    <h3>Scenario 15: Facing BTN Open with Q9s (BB)</h3>
+    <p>Game: 0.50/1 - 6-Handed - 100bb Effective<br>
+    Hero is dealt: Q9s in BB<br>
+    Action:<br>
+    <span style="color: #666">UTG folds</span><br>
+    <span style="color: #666">HJ folds</span><br>
+    <span style="color: #666">CO folds</span><br>
+    <span class="bet-sizing">BTN raises to 2.5bb</span><br>
+    <span style="color: #666">SB folds</span><br>
+    Hero (BB): ?</p>
     <div class="options">
         <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call 2.5bb</div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 3-bet to 13bb</div>
     </div>
-    <div class="answer hidden">Correct Answer: B) Call 2.5bb</div>
+    <div class="answer hidden">Correct Answer: B) Call</div>
     <div class="explanation hidden">
-        <strong>Chart Check:</strong> 98s defends vs BTN<br>
-        <span class="range-alignment">BB vs BTN calls: 54s+, J9s+, suited broadways</span>
+        <span class="range-alignment">BB vs BTN calling range: Q9s+, 22-77, suited connectors (54s+)</span>
+        <span class="range-alignment">BTN opening range: ~40% (22+, A2s+, K9s+, QTs+, JTs, T9s, 98s, AJo+, KQo)</span>
     </div>
 </div>
 
 <!-- Scenario 16 -->
 <div class="scenario">
-    <h3>Scenario 16: JJ vs UTG 3-bet</h3>
-    <p>Hero opens <span class="bet-sizing">2.5bb</span> in CO. UTG 3-bets to <span class="bet-sizing">7.5bb</span>.</p>
+    <h3>Scenario 16: Facing BTN 3-Bet with A4s (CO)</h3>
+    <p>Game: 0.50/1 - 6-Handed - 100bb Effective<br>
+    Hero is dealt: A4s in CO<br>
+    Action:<br>
+    <span style="color: #666">UTG folds</span><br>
+    <span style="color: #666">HJ folds</span><br>
+    <span class="bet-sizing">Hero (CO) raises to 2.5bb</span><br>
+    <span class="bet-sizing">BTN 3-bets to 7.5bb</span><br>
+    <span style="color: #666">SB folds</span><br>
+    <span style="color: #666">BB folds</span><br>
+    Hero (CO): ?</p>
     <div class="options">
         <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">7.5bb</span></div>
-        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to <span class="bet-sizing">25bb</span></div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call 7.5bb</div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to 25bb</div>
     </div>
     <div class="answer hidden">Correct Answer: C) 4-bet to 25bb</div>
     <div class="explanation hidden">
-        <strong>Chart Check:</strong> JJ 4-bet vs UTG<br>
-        <span class="range-alignment">CO 4-bet vs UTG: QQ+, AK</span>
+        <span class="range-alignment">CO 4-bet bluff range: A5s-A2s, 76s-54s</span>
+        <span class="range-alignment">BTN 3-bet range vs CO: 99+, AQ+, KQs, suited aces</span>
     </div>
 </div>
 
 <!-- Scenario 17 -->
 <div class="scenario">
-    <h3>Scenario 17: 72o vs HJ Open</h3>
-    <p>Hero holds 72o in BB. <span class="bet-sizing">HJ opens 2.5bb</span>.</p>
+    <h3>Scenario 17: Facing MP 3-Bet with TT (UTG)</h3>
+    <p>Game: 0.50/1 - 6-Handed - 100bb Effective<br>
+    Hero is dealt: TT in UTG<br>
+    Action:<br>
+    <span class="bet-sizing">Hero (UTG) raises to 2.5bb</span><br>
+    <span style="color: #666">HJ folds</span><br>
+    <span class="bet-sizing">CO 3-bets to 7.5bb</span><br>
+    <span style="color: #666">BTN folds</span><br>
+    <span style="color: #666">SB folds</span><br>
+    <span style="color: #666">BB folds</span><br>
+    Hero (UTG): ?</p>
     <div class="options">
         <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call 7.5bb</div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to 25bb</div>
     </div>
-    <div class="answer hidden">Correct Answer: A) Fold</div>
+    <div class="answer hidden">Correct Answer: B) Call</div>
     <div class="explanation hidden">
-        <strong>Chart Check:</strong> 72o auto-folds<br>
-        <span class="range-alignment">BB vs HJ folds: bottom 50% of hands</span>
+        <span class="range-alignment">UTG vs CO 3-bet calling range: TT-JJ, AQ+</span>
+        <span class="range-alignment">CO 3-bet range vs UTG: 99+, AQ+, KQs (7% of hands)</span>
     </div>
 </div>
 
 <!-- Scenario 18 -->
 <div class="scenario">
-    <h3>Scenario 18: AKs vs 5-bet</h3>
-    <p>Hero 4-bets to <span class="bet-sizing">25bb</span>. CO 5-bet shoves <span class="bet-sizing">100bb</span>.</p>
+    <h3>Scenario 18: Facing CO Open with J8s (BB)</h3>
+    <p>Game: 0.50/1 - 6-Handed - 100bb Effective<br>
+    Hero is dealt: J8s in BB<br>
+    Action:<br>
+    <span style="color: #666">UTG folds</span><br>
+    <span style="color: #666">HJ folds</span><br>
+    <span class="bet-sizing">CO raises to 2.5bb</span><br>
+    <span style="color: #666">BTN folds</span><br>
+    <span style="color: #666">SB folds</span><br>
+    Hero (BB): ?</p>
     <div class="options">
         <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">100bb</span></div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call 2.5bb</div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 3-bet to 13bb</div>
     </div>
-    <div class="answer hidden">Correct Answer: B) Call 100bb</div>
+    <div class="answer hidden">Correct Answer: A) Fold</div>
     <div class="explanation hidden">
-        <strong>Chart Check:</strong> AKs calls 5-bet shove<br>
-        <span class="range-alignment">5-bet range: QQ+, AK</span>
+        <span class="range-alignment">BB vs CO folding range: J8s, T7o, 92o</span>
+        <span class="range-alignment">CO opening range: ~25% (44+, A2s+, KTs+, QTs+, JTs, T9s, 98s, AJo+, KQo)</span>
     </div>
 </div>
 
 <!-- Scenario 19 -->
 <div class="scenario">
-    <h3>Scenario 19: QTo vs SB Open</h3>
-    <p>Hero holds QTo in BB. <span class="bet-sizing">SB opens 2.5bb</span>.</p>
+    <h3>Scenario 19: Facing BB 3-Bet with KQs (BTN)</h3>
+    <p>Game: 0.50/1 - 6-Handed - 100bb Effective<br>
+    Hero is dealt: KQs on BTN<br>
+    Action:<br>
+    <span style="color: #666">UTG folds</span><br>
+    <span style="color: #666">HJ folds</span><br>
+    <span style="color: #666">CO folds</span><br>
+    <span class="bet-sizing">Hero (BTN) raises to 2.5bb</span><br>
+    <span style="color: #666">SB folds</span><br>
+    <span class="bet-sizing">BB 3-bets to 13bb</span><br>
+    Hero (BTN): ?</p>
     <div class="options">
         <div class="option" data-option="A" onclick="handleAnswer(this)">A) Fold</div>
-        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call <span class="bet-sizing">2.5bb</span></div>
+        <div class="option" data-option="B" onclick="handleAnswer(this)">B) Call 13bb</div>
+        <div class="option" data-option="C" onclick="handleAnswer(this)">C) 4-bet to 25bb</div>
     </div>
-    <div class="answer hidden">Correct Answer: A) Fold</div>
+    <div class="answer hidden">Correct Answer: B) Call</div>
     <div class="explanation hidden">
-        <strong>Chart Check:</strong> QTo folds vs SB<br>
-        <span class="range-alignment">SB opens: 22+, A2s+, K9s+, QTs+</span>
+        <span class="range-alignment">BTN vs BB 3-bet calling range: TT-QQ, AQ+, KQs</span>
+        <span class="range-alignment">BB 3-bet range vs BTN: 88+, AQ+, KQs, suited aces (A5s+)</span>
     </div>
 </div>
+
 
 <!-- Scenario 20 -->
 <div class="scenario">
